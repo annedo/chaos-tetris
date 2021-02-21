@@ -39,6 +39,16 @@ namespace Assets.Scripts
                 "XXX" +
                 "XOO" +
                 "OOX",
+
+                // L
+                "XXO" +
+                "OOO" +
+                "XXX",
+
+                // Flipped L
+                "OXX" +
+                "OOO" +
+                "XXX",
             };
 
             Positions = new Dictionary<SpawnPosition, Vector2>()
