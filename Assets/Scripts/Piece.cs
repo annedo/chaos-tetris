@@ -23,14 +23,13 @@ namespace Assets.Scripts
             {
                 if (spawnConfig[i] == PieceSpawnConfigurations.BlockSpace)
                 {
-                    // TODO - Get prefab of tile
                     var newTile = Object.Instantiate(tile);
 
                     // Set tile positions based off i
                     newTile.transform.position = SetTilePosition(i);
                     Tiles.Add(newTile);
+
                     // TODO - check for collisions and create joints
-                    // Tile size and position placement need to be perfect for this.
                 }
             }
 

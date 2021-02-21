@@ -16,5 +16,7 @@ namespace Assets.Scripts
         public static readonly Vector2 SpawnBoxLocation = new Vector2(0, 10f);
 
         public const float FALL_SPEED = 0.01f; // Float moved per frame
+
+        public const float HORIZONTAL_SPEED = 0.01f; // Float moved per frame while moving
     }
 }
