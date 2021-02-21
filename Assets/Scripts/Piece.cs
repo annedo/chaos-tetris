@@ -38,7 +38,18 @@ namespace Assets.Scripts
         /// </summary>
         public void Rotate()
         {
-            // TODO
+            foreach (var tile in Tiles)
+            {
+                tile.transform.RotateAround(Tiles[0].transform.position, Vector3.forward, Config.ROTATION_SPEED * Time.deltaTime);
+            }
+        }
+
+        public void StopRotation()
+        {
+            foreach (var tile in Tiles)
+            {
+                tile.transform.Rotate(0, 0, 0);
+            }
         }
 
         private Vector2 SetTilePosition(int i)
