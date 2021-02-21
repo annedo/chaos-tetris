@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -15,6 +12,7 @@ namespace Assets.Scripts
     public class Piece
     {
         public List<GameObject> Tiles = new List<GameObject>();
+        public bool IsPlaced = false;
 
         public Piece(GameObject tile, string spawnConfig)
         {
@@ -28,13 +26,10 @@ namespace Assets.Scripts
                     // Set tile positions based off i
                     newTile.transform.position = SetTilePosition(i);
                     Tiles.Add(newTile);
-
-                    // TODO - check for collisions and create joints
                 }
             }
 
-            // Bind tiles together?
-
+            // Destroy the copied prefab
             Object.Destroy(tile);
         }
 

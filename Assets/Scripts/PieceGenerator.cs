@@ -1,6 +1,4 @@
 using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,11 +7,10 @@ using UnityEngine;
 /// </summary>
 public class PieceGenerator : MonoBehaviour
 {
-    public GameObject[] _tiles;
+    public GameObject[] _tilePrefabs;
     public Piece ActivePiece;
 
-    private Queue<Piece> _pieceQueue = new Queue<Piece>(Config.QUEUE_LENGTH);
-    private readonly System.Random _random = new System.Random();
+    private readonly System.Random Random = new System.Random();
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +21,10 @@ public class PieceGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check queue, produce pieces for empty queue spots
-        if (_pieceQueue.Count < Config.QUEUE_LENGTH)
-            FillQueue(_pieceQueue);        
-
-        if (ActivePiece?.Tiles == null || ActivePiece.Tiles.All(x => x.gameObject == null))
-            ActivePiece = _pieceQueue.Dequeue();
-
-        // TODO - Update visible queue pieces
-    }
-
-    private void FillQueue(Queue<Piece> queue)
-    {
-        while (queue.Count < Config.QUEUE_LENGTH)
-        {
-            queue.Enqueue(new Piece(GetRandomTile(), GetRandomPieceShape()));
-        }
+        if (ActivePiece?.Tiles == null
+                || ActivePiece.Tiles.All(x => x.gameObject == null)
+                || ActivePiece.IsPlaced)
+            ActivePiece = new Piece(GetRandomTile(), GetRandomPieceShape());
     }
 
     /// <summary>
@@ -47,7 +32,7 @@ public class PieceGenerator : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     private GameObject GetRandomTile()
-        => Instantiate(_tiles[_random.Next(0, _tiles.Length)]);
+        => Instantiate(_tilePrefabs[Random.Next(0, _tilePrefabs.Length)]);
 
     /// <summary>
     /// Grabs a random spawn configuration.
@@ -55,5 +40,5 @@ public class PieceGenerator : MonoBehaviour
     /// <returns></returns>
     private string GetRandomPieceShape()
         => PieceSpawnConfigurations.Configurations
-            [_random.Next(0, PieceSpawnConfigurations.Configurations.Count)];
+            [Random.Next(0, PieceSpawnConfigurations.Configurations.Count)];
 }
