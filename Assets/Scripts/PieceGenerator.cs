@@ -86,7 +86,7 @@ public class PieceGenerator : MonoBehaviour
     /// <param name="float1"></param>
     /// <param name="float2"></param>
     /// <returns></returns>
-    private bool FloatsAreCloseEnough(float float1, float float2, float difference = 0.4f)
+    private bool FloatsAreCloseEnough(float float1, float float2, float difference = 1f)
     {
         if (float1 < float2 + difference
             && float1 > float2 - difference)
