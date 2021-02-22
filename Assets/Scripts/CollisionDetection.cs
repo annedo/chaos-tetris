@@ -24,7 +24,7 @@ public class CollisionDetection : MonoBehaviour
         if (!_fallDown.IsFalling)
             return;
 
-        if (collision.collider.CompareTag(Constants.GridBottom)
+        if (collision.collider.gameObject.CompareTag(Constants.GridBottom)
             || !collision.collider.gameObject.GetComponent<FallDown>().IsFalling)
         {
             // Set tiles in this piece to no longer fall
