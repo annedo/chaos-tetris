@@ -4,40 +4,36 @@ using UnityEngine;
 public class CollisionDetection : MonoBehaviour
 {
     private PieceGenerator _pieceGenerator;
-    private FallDown _fallDown;
+    private Rigidbody2D _rigidBody;
+
+    private bool TilePlaced = false;
 
     // Start is called before the first frame update
     void Start()
     {
         _pieceGenerator = FindObjectOfType<PieceGenerator>();
-        _fallDown = GetComponent<FallDown>();
+        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!_fallDown.IsFalling)
+        if (TilePlaced)
             return;
 
-        if (collision.collider.gameObject.CompareTag(Constants.GridBottom)
-            || !collision.collider.gameObject.GetComponent<FallDown>().IsFalling)
+        // Skip collision detection at spawn box
+        if (transform.position.y >= Config.SpawnBoxLocation.y - 3f)
+            return;        
+
+        if (_rigidBody.velocity.magnitude > 0)
+            return;        
+
+        _pieceGenerator.ActivePiece.IsPlaced = true;
+
+        // Set tiles in this piece to placed
+        foreach (var tile in _pieceGenerator.ActivePiece.Tiles)
         {
-            // Set tiles in this piece to no longer fall
-            foreach (var tile in _pieceGenerator.ActivePiece.Tiles)
-            {
-                tile.GetComponent<FallDown>().IsFalling = false;
-            }
-
-            _pieceGenerator.ActivePiece.IsPlaced = true;
+            tile.GetComponent<CollisionDetection>().TilePlaced = true;
         }
-
-        // TODO - Side collision ignore
-
-        // TODO - Trigger stack check
     }
 }

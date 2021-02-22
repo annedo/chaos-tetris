@@ -22,6 +22,7 @@ namespace Assets.Scripts
                 if (spawnConfig[i] == PieceSpawnConfigurations.BlockSpace)
                 {
                     var newTile = Object.Instantiate(tile);
+                    newTile.tag = Constants.Tile;
 
                     // Set tile positions based off i
                     newTile.transform.position = SetTilePosition(i);
