@@ -7,5 +7,6 @@
         public const string TopCollider = "TopCollider";
         public const string BottomCollider = "BottomCollider";
         public const string GridBottom = "GridBottom";
+        public const string Tile = "Tile";
     }
 }

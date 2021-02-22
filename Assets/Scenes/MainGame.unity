@@ -460,6 +460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2922547116499211470, guid: 91ccfff2a893f64439e9a699c124a1bd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4120207530561562804, guid: 91ccfff2a893f64439e9a699c124a1bd, type: 3}
       propertyPath: m_Name
       value: GridBottom

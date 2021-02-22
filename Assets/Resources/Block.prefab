@@ -178,10 +178,9 @@ GameObject:
   - component: {fileID: 3267808782816619044}
   - component: {fileID: 5950689602657462820}
   - component: {fileID: 1568694447362543249}
-  - component: {fileID: 1089548147670660361}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +210,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 0c20b98239c23294aaf9d33c223eea1e, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 0.5}
@@ -272,16 +271,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1263887b645a1840b6b8cc87a733c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1089548147670660361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3493872282547768821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc34d5070ba6374da28422fb350ae2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsFalling: 1
